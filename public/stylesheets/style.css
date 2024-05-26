@@ -1,41 +1,95 @@
-body {
+body, html {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-header {
-  background-color: #333;
-  color: #fff;
-  padding: 1rem;
-}
-
-header nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-header nav ul li {
-  display: inline;
-  margin-right: 1rem;
-}
-
-header nav ul li a {
-  color: #fff;
-  text-decoration: none;
+  background-color: #009dc0;
 }
 
 main {
   padding: 1rem;
+  background-color: #009dc0;
 }
 
 footer {
-  background-color: #333;
+  background-color: #009dc0;
   color: #fff;
   text-align: center;
   padding: 1rem;
   position: fixed;
   width: 100%;
   bottom: 0;
+}
+
+img {
+  display: block;
+  margin: auto;
+}
+
+body, p, input, select, textarea, button {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -0.2px;
+    font-size: 16px;
+}
+
+form {
+  padding: 16px;
+  width: 650px; /* 16px * 20 */
+  margin: 0 auto;
+}
+
+button, input {
+  border: 0;
+  outline: 0;
+  font-size: 16px;
+  border-radius: 320px; /* 16px * 20 */
+  padding: 16px;
+  background-color: #EBECF0;
+  text-shadow: 1px 1px 0 #FFF;
+}
+
+label {
+  display: block;
+  margin-bottom: 24px; /* 16px * 1.5 */
+  width: 100%;
+}
+
+input {
+  margin-right: 8px; /* 16px / 2 */
+  box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+input:focus {
+  box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+
+button {
+  font-weight: bold;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  box-shadow: -1px -1px 1px #FFF, 1px 1px 1px #BABECC;
+}
+
+button:active {
+  box-shadow: inset 1px 1px 1px #BABECC, inset -1px -1px 1px #FFF;
+}
+
+button.login {
+  color: #009dc0;
+  float:right;
+  margin-right: 20px;
+}
+
+button.register {
+  color: #009dc0;
+  float:right;
 }
