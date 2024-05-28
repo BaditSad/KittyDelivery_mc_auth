@@ -1,5 +1,6 @@
 import axios from 'axios';
 export default {
+  name : 'Home',
   data() {
     return {
       message: "ok"
