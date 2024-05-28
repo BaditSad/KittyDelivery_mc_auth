@@ -1,8 +1,9 @@
+// @ is an alias to /src
+import HomePage from '@/components/HomePage.vue'
+
 export default {
-    name: 'RegisterPage',
-    methods: {
-      login() {
-        // Logique de connexion (importé de Login.js ou défini ici)
-      }
-    }
-  };
+  name: 'HomePage',
+  components: {
+    HomePage
+  }
+}

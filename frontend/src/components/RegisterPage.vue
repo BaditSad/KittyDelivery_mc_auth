@@ -8,7 +8,7 @@
   <div class="container">
     <main>
       <form class="form">
-        <h1>Connexion avec votre compte Kitty</h1>
+        <h1>Création de votre compte Kitty ! &#129395;</h1>
         <label>
           <input type="text" placeholder="Adresse email" />
         </label>
@@ -18,13 +18,13 @@
         <label>
           <input type="password" placeholder="Vérification du mot de passe" />
         </label>
-        <router-link :to="{ HomePage : '/HomePage' }">
         <button class="button-login" type="button">
           <i class="icon ion-md-lock"></i> S'inscrire
         </button>
-        </router-link>
       </form>
-      <p class="signup">Déjà un compte ?</p>
+      <router-link to="/">
+        <p class="signup">Déjà un compte ?</p>
+      </router-link>
     </main>
   </div>
 </template>

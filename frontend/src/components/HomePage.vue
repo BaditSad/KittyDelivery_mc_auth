@@ -8,20 +8,22 @@
   <div class="container">
     <main>
       <form class="form">
-        <h1>Connexion avec votre compte Kitty</h1>
+        <h1>Connexion avec votre compte Kitty ! &#9995;</h1>
         <label>
           <input type="text" placeholder="Adresse email" />
         </label>
         <label>
           <input type="password" placeholder="Mot de passe" />
         </label>
-        <router-link :to="{ RegisterPage : '/RegisterPage' }">
         <button class="button-login" type="button">
-          <i class="icon ion-md-lock"></i> S'inscrire
+          <i class="icon ion-md-lock"></i> Connexion
         </button>
-        </router-link>
       </form>
-      <p class="signup">S'inscrire</p>
+      <div class="signup-container">
+        <router-link to="/register">
+          <p class="signup">S'inscrire</p>
+        </router-link>
+      </div>
     </main>
   </div>
 </template>
