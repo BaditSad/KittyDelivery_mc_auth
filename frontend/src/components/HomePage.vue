@@ -9,11 +9,11 @@
     <main>
       <form class="form">
         <h1>Connexion avec votre compte Kitty ! &#9995;</h1>
-        <label>
-          <input type="text" placeholder="Adresse email" />
+        <label class="text">
+          <input class="text" type="text" placeholder="Adresse email" />
         </label>
-        <label>
-          <input type="password" placeholder="Mot de passe" />
+        <label class="text">
+          <input class="text" type="password" placeholder="Mot de passe" />
         </label>
         <button class="button-login" type="button">
           <i class="icon ion-md-lock"></i> Connexion

@@ -9,15 +9,26 @@
     <main>
       <form class="form">
         <h1>Création de votre compte Kitty ! &#129395;</h1>
-        <label>
-          <input type="text" placeholder="Adresse email" />
+        <label class="text">
+          <input class="text" type="text" placeholder="Adresse email" />
         </label>
-        <label>
-          <input type="password" placeholder="Mot de passe" />
+        <label class="text">
+          <input class="text" type="password" placeholder="Mot de passe" />
         </label>
-        <label>
-          <input type="password" placeholder="Vérification du mot de passe" />
+        <label class="text">
+          <input class="text" type="password" placeholder="Vérification du mot de passe" />
         </label>
+        <div class="radio-group">
+          <label class="radio">
+            <input type="radio" name="option" value="1" /> Client
+          </label>
+          <label class="radio">
+            <input type="radio" name="option" value="2" /> Livreur
+          </label>
+          <label class="radio">
+            <input type="radio" name="option" value="3" /> Restaurateur
+          </label>
+        </div>
         <button class="button-login" type="button">
           <i class="icon ion-md-lock"></i> S'inscrire
         </button>
