@@ -1,11 +1,9 @@
-/* Styles généraux */
 body, p, input, select, textarea, button, h1 {
   font-family: 'Montserrat', sans-serif;
   letter-spacing: -0.2px;
   font-size: 16px;
 }
 
-/* En-tête */
 header {
   width: 100%;
   text-align: center;
@@ -13,14 +11,12 @@ header {
   top: 0;
 }
 
-/* Images */
 img {
   padding-top: 2%;
   padding-bottom: 1%;
   width: 40%;
 }
 
-/* Titres */
 h1 {
   text-align: center;
   font-size: 24px;
@@ -29,7 +25,6 @@ h1 {
   font-weight: bold;
 }
 
-/* Boutons et champs de saisie */
 button, input.text {
   border: 0;
   outline: 0;
@@ -53,7 +48,6 @@ input.text:focus {
   box-shadow: inset 1px 1px 2px white, inset -1px -1px 2px white;
 }
 
-/* Formulaire */
 .form {
   width: 30%;
   background: #DDA476;
@@ -67,7 +61,6 @@ input.text:focus {
   align-items: center;
 }
 
-/* Bouton de connexion */
 .button-login {
   appearance: button;
   background-color: #1899D6;
@@ -126,7 +119,6 @@ input.text:focus {
   background: none;
 }
 
-/* Inscription */
 .signup-container {
   display: flex;
   justify-content: center;
@@ -146,7 +138,6 @@ input.text:focus {
   text-decoration: none;
 }
 
-/* Labels */
 label.text {
   display: flex;
   flex-direction: column;

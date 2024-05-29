@@ -1,7 +1,7 @@
 import HomePage from '@/components/HomePage.vue'
 import axios from 'axios';
 export default {
-  name: 'HomeView',
+  name: 'HomePage',
   components: {
     HomePage
   }
