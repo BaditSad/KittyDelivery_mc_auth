@@ -3,7 +3,7 @@
 
 <template>
   <header>
-    <img src="../assets/ban.png" />
+    <img src="../assets/title.png" />
   </header>
   <div class="container">
     <main>
