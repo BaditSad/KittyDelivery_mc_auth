@@ -1,9 +1,9 @@
 // @ is an alias to /src
-import HomePage from '@/components/HomePage.vue'
+import RegisterPage from '@/components/RegisterPage.vue'
 
 export default {
-  name: 'HomePage',
+  name: 'RegisterPage',
   components: {
-    HomePage
+    RegisterPage
   }
 }
