@@ -3,12 +3,13 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 exports.register = async (req, res) => {
-  const { username, email, password, confirmPassword } = req.body;
+  const { username, email, password, confirmPassword, address,phone_number } = req.body;
+    console.log("🚀 ~ exports.register= ~ username:", username)
 
-  if (password !== confirmPassword) {
+  if (password != confirmPassword) {
     return res.status(400).json({ msg: 'Passwords do not match' });
   }
-console.log("WOW")
+  console.log("WOW")
   try {
     let user = await User.findOne({ email });
     if (user) {
@@ -18,6 +19,8 @@ console.log("WOW")
     user = new User({
       username,
       email,
+      address,
+      phone_number,
       password
     });
 

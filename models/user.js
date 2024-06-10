@@ -17,13 +17,28 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  refreshToken: {
+  phone_number:{
     type: String,
+    required: true
+  },
+  address:{
+    type: String,
+    required: true
+  },
+  account_status: {
+    type: Boolean,
+    default: true,
   },
   createdAt: {
     type: Date,
     default: Date.now
-  }
+  },
+  tokens:[{
+    type: String,
+  }],
+  refreshTokens:[{
+    type: String,
+  }]
 });
 
 UserSchema.methods.comparePassword = function(password) {
@@ -31,7 +46,7 @@ UserSchema.methods.comparePassword = function(password) {
 };
 
 UserSchema.methods.getNewJwt = function() {
-  return jwt.sign({ id: this._id, email: this.email, username: this.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+  return jwt.sign({ id: this._id, email: this.email, username: this.username }, process.env.JWT_SECRET, { expiresIn: '1d' });
 };
 
 UserSchema.methods.generateRefreshToken = function() {

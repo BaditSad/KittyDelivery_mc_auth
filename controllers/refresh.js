@@ -19,8 +19,8 @@ exports.refresh = async (req, res) => {
     }
 
     const newAccessToken = user.getNewJwt();
-    const newRefreshToken = user.generateRefreshToken();
-    user.refreshToken = newRefreshToken;
+    //const nefreshToken = user.generateRefreshToken();
+    user.tokens.push(newAccessToken);
     await user.save();
 
     res.json({
@@ -30,7 +30,6 @@ exports.refresh = async (req, res) => {
         username: user.username
       },
       token: newAccessToken,
-      refreshToken: newRefreshToken
     });
   } catch (err) {
     res.status(401).json({ msg: 'Token is not valid' });
