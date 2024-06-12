@@ -1,58 +1,57 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const { Sequelize, DataTypes } = require("sequelize");
+const sequelize = require("../config/db.config");
 
-const UserSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: true
+const User = sequelize.define(
+  "User",
+  {
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    user_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    user_email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    user_role: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    user_password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    user_telephone: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    user_address: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    user_token_access: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    user_token_refresh: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    user_account_status: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  phone_number:{
-    type: String,
-    required: true
-  },
-  address:{
-    type: String,
-    required: true
-  },
-  account_status: {
-    type: Boolean,
-    default: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  tokens:[{
-    type: String,
-  }],
-  refreshTokens:[{
-    type: String,
-  }]
-});
+  {
+    tableName: "users",
+    timestamps: false,
+  }
+);
 
-UserSchema.methods.comparePassword = function(password) {
-  return bcrypt.compareSync(password, this.password);
-};
-
-UserSchema.methods.getNewJwt = function() {
-  return jwt.sign({ id: this._id, email: this.email, username: this.username }, process.env.JWT_SECRET, { expiresIn: '1d' });
-};
-
-UserSchema.methods.generateRefreshToken = function() {
-  const refreshToken = jwt.sign({ id: this._id, email: this.email, username: this.username }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '7d' });
-  this.refreshToken = refreshToken;
-  return refreshToken;
-};
-
-module.exports = mongoose.model('User', UserSchema);
+module.exports = User;
