@@ -1,22 +1,20 @@
-require('dotenv').config()
-const express = require('express');
-const cors = require('cors');
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
 const bodyParser = require("body-parser");
-const authRouter = require('./routes/authRoute');
+const LoginRouter = require("./controllers/LoginController");
+const LogoutRouter = require("./controllers/LogoutController");
+const RegisterRouter = require("./controllers/RegisterController");
+const TokenRefreshRouter = require("./controllers/TokenRefreshController");
 const app = express();
-const port = 3005;
-const dbConn = require('./config/db.config');
-app.dbConn=dbConn();
+const port = process.env.PORT;
+
 app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(authRouter);
+app.use("/login", LoginRouter);
+app.use("/logout", LogoutRouter);
+app.use("/register", RegisterRouter);
+app.use("/refresh", TokenRefreshRouter);
 
-
-//Ici on envoit les infos vers le front
-
-app.get('/message', (req, res) => {
-    const message = 'messageType'
-    res.send(message);
-});
-
-app.listen(port, () => console.log('app running on http://localhost:3000'));
+app.listen(port, () => console.log(`app running on http://localhost:${port}`));
