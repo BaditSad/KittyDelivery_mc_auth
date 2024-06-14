@@ -7,8 +7,8 @@ module.exports = router;
 
 router.post("/", async (req, res) => {
   try {
-    console.log(req.body);
     const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+
     const user = {
       user_name: req.body.name,
       user_password: hashedPassword,
@@ -18,9 +18,11 @@ router.post("/", async (req, res) => {
       user_address: req.body.address,
       user_account_status: "active",
     };
+
     await User.create(user);
+
     res.status(201).json({
-      msg: "New User created!",
+      message: "Item posted!",
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

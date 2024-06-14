@@ -6,15 +6,17 @@ module.exports = router;
 
 router.post("/", async (req, res) => {
   try {
-    const user = await User.findOneAndUpdate(
-      { _id: req.user._id },
-    );
+    const user = await User.findOneAndUpdate({ _id: req.user._id });
+
     if (!user) {
-      return res.status(404).json({ message: "User not found!" });
+      return res.status(404).json({ message: "Not found!" });
     }
+
     user.refreshToken = null;
+
     await user.save();
-    res.status(200).json({ message: "Logged out successfully!" });
+
+    res.status(201).json({ message: "Out" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
