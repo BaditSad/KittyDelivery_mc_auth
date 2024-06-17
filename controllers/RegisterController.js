@@ -1,5 +1,5 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
+const argon2 = require("argon2");
 const User = require("../models/user");
 const router = express.Router();
 
@@ -7,8 +7,8 @@ module.exports = router;
 
 router.post("/", async (req, res) => {
   try {
-    const hashedPassword = bcrypt.hashSync(req.body.password, 10);
-
+    const hashedPassword = await argon2.hash(req.body.password);
+    
     const user = {
       user_name: req.body.name,
       user_password: hashedPassword,

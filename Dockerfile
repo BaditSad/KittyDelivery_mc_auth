@@ -1,6 +1,9 @@
 # Use an official Node.js runtime as a parent image
 FROM node:latest
 
+# Install PostgreSQL client
+RUN apt-get update && apt-get install -y postgresql-client
+
 # Set the working directory
 WORKDIR /app
 

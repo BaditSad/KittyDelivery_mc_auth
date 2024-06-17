@@ -1,6 +1,6 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+const argon2 = require("argon2");
 const User = require("../models/user");
 const router = express.Router();
 
@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
       return res.status(404).json({ message: "Not found" });
     }
 
-    const isMatch = await bcrypt.compare(req.body.password, user.user_password);
+    const isMatch = await argon2.verify(user.user_password, req.body.password);
 
     if (!isMatch) {
       return res.status(404).json({ message: "Not found" });
@@ -34,7 +34,7 @@ router.post("/", async (req, res) => {
     user.user_token_access = token;
 
     await user.save();
-    
+
     //if user_role === restaurateur alors address = restaurant_address where user_id = user_id
     res.status(201).json({
       id: user.user_id,
