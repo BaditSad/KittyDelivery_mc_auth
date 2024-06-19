@@ -1,4 +1,5 @@
 require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -7,13 +8,25 @@ const LogoutRouter = require("./controllers/LogoutController");
 const RegisterRouter = require("./controllers/RegisterController");
 const TokenRefreshRouter = require("./controllers/TokenRefreshController");
 const sequelize = require("./config/db.config");
+const fs = require("fs");
+const path = require("path");
 
 const app = express();
 const port = process.env.PORT;
 
+const swaggerDocumentd = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "swagger.json"))
+);
+
 app.use(cors());
-app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use("/swagger.json", (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  res.send(swaggerDocumentd);
+});
+
+app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/login", LoginRouter);
