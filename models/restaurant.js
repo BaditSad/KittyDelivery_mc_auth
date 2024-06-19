@@ -31,7 +31,7 @@ const Restaurant = sequelize.define(
       allowNull: true,
     },
     restaurant_telephone: {
-      type: DataTypes.BIGINT,
+      type: DataTypes.STRING,
       allowNull: true,
     },
   },

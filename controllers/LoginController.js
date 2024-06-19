@@ -39,7 +39,7 @@ router.post("/",
     const refreshToken = jwt.sign(
       { id: user.user_id },
       process.env.REFRESH_TOKEN_SECRET,
-      { expiresIn: "1d" }
+      { expiresIn: "16h" }
     );
 
     user.user_token_refresh = refreshToken;
