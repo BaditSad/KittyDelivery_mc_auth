@@ -1,6 +1,7 @@
 const express = require("express");
 const argon2 = require("argon2");
 const User = require("../models/user");
+const Restaurant = require("../models/restaurant");
 const router = express.Router();
 
 module.exports = router;
@@ -8,7 +9,7 @@ module.exports = router;
 router.post("/", async (req, res) => {
   try {
     const hashedPassword = await argon2.hash(req.body.password);
-    
+
     const user = {
       user_name: req.body.name,
       user_password: hashedPassword,
@@ -19,7 +20,19 @@ router.post("/", async (req, res) => {
       user_account_status: "active",
     };
 
-    await User.create(user);
+    const createdUser = await User.create(user);
+
+    if (req.body.role === "restaurateur") {
+      const restaurant = {
+        user_id: createdUser.user_id,
+        restaurant_name: req.body.restaurant_name,
+        restaurant_address: req.body.restaurant_address,
+        restaurant_description: req.body.restaurant_description,
+        restaurant_telephone: req.body.restaurant_telephone,
+      };
+
+      await Restaurant.create(restaurant);
+    }
 
     res.status(201).json({
       message: "Item posted!",
